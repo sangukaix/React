@@ -1,0 +1,101 @@
+<!-- ========================================================================= -->
+<script>
+/* 일반함수 */
+function hello(){
+    document.write("일반함수입니다")};
+
+hello();
+</script>
+
+<script>
+const noname = function(){
+    document.write("익명함수입니다")};
+noname();
+</script>
+
+<script>
+const arrow = ()=>{
+    document.write("화살표 함수")};
+arrow();
+</script>
+
+<!-- 화살표 함수 여러가지 -->
+<hr>
+<script>
+    /* 파라미터가 1개일때 괄호생략가능 */
+    const arrow1 = (name) =>{
+        document.write(name);
+    }
+    arrow1("sanguk");
+</script>
+
+<script>
+    /* 실행문이 한줄이면 {} 생략가능*/
+    const arrow2 = name =>
+    document.write(name)
+
+    arrow2("hyun");
+</script>
+
+<script>
+    /* 파라미터 없을때 괄호만 치기*/
+    const arrow3 =()=> document.write("파라미터 없음");
+    arrow3();
+</script>
+
+<script>
+    /* 파라미터2개 이상일때 */
+    const arrow4 =(name, age, height) =>{
+        document.write("저는"+name +age+height+"입니다")
+    }
+    arrow4("홍길동", 28, "175cm")
+</script>
+
+
+<!-- 이벤트에서 화살표 함수 사용하기  */
+/* 기존방식(익명함수) */ -->
+ <button id="b1">버튼</button>
+
+<!-- <script>
+    const btn = document.getElementById("b1");
+
+    btn.onclick = function(){
+        document.getElementById("b1").innerHTML = "버튼 클릭됨";
+    }; -->
+</script> -->
+<!--  화살표방식 -->
+<script>
+    const btn = document.getElementById("b1");
+
+    btn.onclick = ()=>{
+        btn.innerHTML = "버튼 클릭됨";
+    };
+</script>
+
+<!--  화살표방식 한줄 실행문이라서 {} 생략버전 -->
+<script>
+    const btn = document.getElementById("b1");
+
+    btn.onclick = ()=>
+        btn.innerHTML = "버튼 클릭됨";
+</script>
+<!-- ========================================================================= -->
+
+
+<hr>
+<script>
+    const courses = ["HTML", "CSS", "JavaScript"];
+
+    courses.forEach(function(course){
+        document.write(course + "<br>");
+    });
+</script>
+
+<hr>
+<script>
+    const names = ["sam", "hyun", "react"];
+
+    names.forEach(function(samlist){
+        document.write(samlist)
+    });
+</script>
