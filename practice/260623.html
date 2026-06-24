@@ -54,7 +54,7 @@ arrow();
 
 <!-- 이벤트에서 화살표 함수 사용하기  */
 /* 기존방식(익명함수) */ -->
- <button id="b1">버튼</button>
+ <!-- <button id="b1">버튼</button> -->
 
 <!-- <script>
     const btn = document.getElementById("b1");
@@ -62,7 +62,7 @@ arrow();
     btn.onclick = function(){
         document.getElementById("b1").innerHTML = "버튼 클릭됨";
     }; -->
-</script> -->
+<!-- </script> --> -->
 <!--  화살표방식 -->
 <script>
     const btn = document.getElementById("b1");
@@ -79,23 +79,96 @@ arrow();
     btn.onclick = ()=>
         btn.innerHTML = "버튼 클릭됨";
 </script>
+
+<script>
+    //* 배열 안의 값을 하나씩 반복해서 출력하기 */
+     // 강아지 이름들을 배열에 저장
+    const names1 = ["chiwawa", "bull"]
+
+     // names1 배열 안의 값을 하나씩 꺼내기
+    names1.forEach(function(dogName){;
+    document.write(dogName);
+    })
+    </script>
+
+     <hr>
+ <!-- <script>
+    /* map으로 배열 값을 바꿔서 새로운 배열 만들기 */
+    const nums = [10, 20, 30];
+
+    const mapResult = nums.map(function(num){
+        return num *2
+    })
+
+    document.write(mapResult)
+ </script> -->
+
+
+ <!-- /* map으로 배열 값을 바꿔서 새로운 배열 만들기 */ -->
+ <hr>
+ <script>
+    /* map으로 배열 값을 바꿔서 새로운 배열 만들기 */
+    const nums = [10, 20, 30];
+
+    const mapResult = nums.map(function(num){
+        return num *2
+    })
+
+    document.write(mapResult)
+ </script>
+
 <!-- ========================================================================= -->
 
 
-<hr>
-<script>
-    const courses = ["HTML", "CSS", "JavaScript"];
+<!-- practice draft -->
 
-    courses.forEach(function(course){
-        document.write(course + "<br>");
-    });
+<!-- 모듈가지고 오기 -->
+<h3 id="result"></h3>
+
+<script type="module">
+    import {teacher} from './practice.js';
+
+    document.getElementById("result").innerHTML = teacher;
 </script>
 
-<hr>
-<script>
-    const names = ["sam", "hyun", "react"];
 
-    names.forEach(function(samlist){
-        document.write(samlist)
-    });
+<!-- 모듈여러개 가지고 오기 -->
+<h3 id="result1"></h3>
+
+<script type="module">
+    import {teacher, price, subject}from './practice.js';
+
+    document.getElementById("result1").innerHTML =
+    teacher + subject + price;
+
 </script>
+
+<!-- 모듈 이름 줄여서 가지고 오기 -->
+<p id = "result2"></p>
+
+<script type="module">
+    import {price as p} from './practice.js';
+
+    document.getElementById("result2").innerHTML = p; //id가 result2인 p 안에 p 값을 넣어라
+
+</script>
+
+<!-- default 모듈 가지고 오기 -->
+<p id="result3"></p>
+
+<script type="module">
+    import show from './practice.js';
+
+    document.getElementById("result3").innerHTML = show();
+</script>
+
+<!-- default 모듈 한줄로 가지고 오기 -->
+ <p id="result3"></p>
+
+ <script type="module">
+    import show, {teacher, subject, price as p} from './practice.js';
+
+    document.getElementById("result3").innerHTML = 
+    show() + teacher + subject + p;
+
+ </script>

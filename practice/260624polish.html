@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 복습</title>
+</head>
+<body>
+
+    <h2>ES6 JavaScript 복습</h2>
+
+    <!-- ========================================================= -->
+    <h3>1. 일반 함수 / 익명 함수 / 화살표 함수</h3>
+
+    <script>
+        /* 일반 함수: function 함수이름() 형태 */
+        function hello(){
+            document.write("일반함수입니다<br>");
+        }
+
+        // 함수 실행
+        hello();
+    </script>
+
+    <script>
+        /* 익명 함수: 이름 없는 함수를 변수에 저장 */
+        const noname = function(){
+            document.write("익명함수입니다<br>");
+        };
+
+        // 변수 이름으로 함수 실행
+        noname();
+    </script>
+
+    <script>
+        /* 화살표 함수: 익명 함수를 더 짧게 쓴 ES6 문법 */
+        const arrow = () => {
+            document.write("화살표 함수입니다<br>");
+        };
+
+        // 함수 실행
+        arrow();
+    </script>
+
+
+    <!-- ========================================================= -->
+    <hr>
+    <h3>2. 화살표 함수 여러 가지 형태</h3>
+
+    <script>
+        /* 파라미터가 1개일 때: 괄호를 생략할 수도 있음 */
+        const arrow1 = name => {
+            document.write(name + "<br>");
+        };
+
+        arrow1("sanguk");
+    </script>
+
+    <script>
+        /* 실행문이 한 줄이면 {} 생략 가능 */
+        const arrow2 = name => document.write(name + "<br>");
+
+        arrow2("hyun");
+    </script>
+
+    <script>
+        /* 파라미터가 없을 때는 빈 괄호 () 필요 */
+        const arrow3 = () => document.write("파라미터 없음<br>");
+
+        arrow3();
+    </script>
+
+    <script>
+        /* 파라미터가 2개 이상일 때는 괄호 생략 불가 */
+        const arrow4 = (name, age, height) => {
+            document.write("저는 " + name + ", " + age + "살, " + height + "입니다<br>");
+        };
+
+        arrow4("홍길동", 28, "175cm");
+    </script>
+
+
+    <!-- ========================================================= -->
+    <hr>
+    <h3>3. 이벤트에서 함수 사용하기</h3>
+
+    <!-- 기존 방식: 익명 함수로 클릭 이벤트 처리 -->
+    <button id="btn1">익명함수 버튼</button>
+
+    <script>
+        /* 버튼 요소를 id로 찾아서 btn1 변수에 저장 */
+        const btn1 = document.getElementById("btn1");
+
+        /* 버튼을 클릭하면 익명 함수 실행 */
+        btn1.onclick = function(){
+            btn1.innerHTML = "익명함수로 클릭됨";
+        };
+    </script>
+
+    <br><br>
+
+    <!-- 화살표 함수 방식 -->
+    <button id="btn2">화살표 함수 버튼</button>
+
+    <script>
+        /* 버튼 요소를 id로 찾아서 btn2 변수에 저장 */
+        const btn2 = document.getElementById("btn2");
+
+        /* 버튼을 클릭하면 화살표 함수 실행 */
+        btn2.onclick = () => {
+            btn2.innerHTML = "화살표 함수로 클릭됨";
+        };
+    </script>
+
+    <br><br>
+
+    <!-- 화살표 함수 한 줄 버전 -->
+    <button id="btn3">한 줄 화살표 버튼</button>
+
+    <script>
+        /* 실행문이 한 줄이면 {} 생략 가능 */
+        const btn3 = document.getElementById("btn3");
+
+        btn3.onclick = () => btn3.innerHTML = "한 줄 화살표 함수로 클릭됨";
+    </script>
+
+
+    <!-- ========================================================= -->
+    <hr>
+    <h3>4. forEach로 배열 값 하나씩 꺼내기</h3>
+
+    <script>
+        /* 배열: 여러 개의 값을 하나의 변수에 저장 */
+        const dogNames = ["chiwawa", "bull"];
+
+        /*
+            forEach:
+            배열 안의 값을 하나씩 꺼내서 함수에 전달함.
+            dogName에는 "chiwawa", "bull"이 순서대로 들어옴.
+        */
+        dogNames.forEach(function(dogName){
+            document.write(dogName + "<br>");
+        });
+    </script>
+
+
+    <!-- ========================================================= -->
+    <hr>
+    <h3>5. map으로 배열 값을 바꿔서 새 배열 만들기</h3>
+
+    <script>
+        /* 숫자 배열 */
+        const nums = [10, 20, 30];
+
+        /*
+            map:
+            배열 값을 하나씩 꺼내서 계산한 뒤,
+            그 결과를 새로운 배열로 만들어줌.
+        */
+        const mapResult = nums.map(function(num){
+            return num * 2;
+        });
+
+        document.write(mapResult + "<br>");
+    </script>
+
+
+    <!-- ========================================================= -->
+    <hr>
+    <h3>6. module / export / import 연습</h3>
+
+    <!-- named export 하나 가져오기 -->
+    <p id="result1"></p>
+
+    <script type="module">
+        /*
+            import {teacher}
+            practice.js에서 teacher라는 이름으로 export한 값을 가져옴.
+        */
+        import {teacher} from './practice.js';
+
+        document.getElementById("result1").innerHTML = teacher;
+    </script>
+
+
+    <!-- named export 여러 개 가져오기 -->
+    <p id="result2"></p>
+
+    <script type="module">
+        /*
+            여러 개를 가져올 때는 {} 안에 export한 이름을 그대로 적음.
+        */
+        import {teacher, subject, price} from './practice.js';
+
+        document.getElementById("result2").innerHTML =
+            teacher + "<br>" + subject + "<br>" + price;
+    </script>
+
+
+    <!-- as로 이름 바꿔서 가져오기 -->
+    <p id="result3"></p>
+
+    <script type="module">
+        /*
+            price as p:
+            practice.js의 price를 가져오되,
+            이 HTML 파일 안에서는 p라는 이름으로 사용함.
+        */
+        import {price as p} from './practice.js';
+
+        document.getElementById("result3").innerHTML = p;
+    </script>
+
+
+    <!-- default export 가져오기 -->
+    <p id="result4"></p>
+
+    <script type="module">
+        /*
+            default export는 {} 없이 가져옴.
+            show는 practice.js에서 대표로 export한 함수.
+        */
+        import show from './practice.js';
+
+        document.getElementById("result4").innerHTML = show();
+    </script>
+
+
+    <!-- default export + named export 같이 가져오기 -->
+    <p id="result5"></p>
+
+    <script type="module">
+        /*
+            show는 default export라서 {} 밖.
+            teacher, subject, price as p는 named export라서 {} 안.
+        */
+        import show, {teacher, subject, price as p} from './practice.js';
+
+        document.getElementById("result5").innerHTML =
+            show() + "<br>" + teacher + "<br>" + subject + "<br>" + p;
+    </script>
+
+</body>
+</html>
