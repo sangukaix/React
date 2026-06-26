@@ -1,0 +1,47 @@
+.item{
+    border: 1px solid gray;
+    padding: 16px;
+    margin: 4px;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.line1{
+    width: 100%;
+    margin-bottom: 8px;
+}
+.line1 span{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.line1 span:nth-child(1){
+    margin-right: 2rem;
+}
+.line1 span:nth-child(2){
+    color: green;
+}
+
+.line2{
+    color: darkolivegreen;
+}
+
+.item:hover, .item:active{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.item{
+    display: flex;                  /* 글자와 이미지를 가로로 배치 */
+    align-items: right; /* 세로 가운데 정렬 */
+
+}
+
+.item-img {
+    width: 250px;          /* 이미지 가로 크기 */
+    height: 85px;          /* 이미지 세로 크기 */
+    object-fit: contain;     /* 비율이 안 맞아도 박스 안에 꽉 차게 자름 */
+    
+    margin-left: auto
+}

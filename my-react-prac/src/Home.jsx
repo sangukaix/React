@@ -8,7 +8,7 @@ class Home extends Component {
         return (
             <div className="home">
                 <h2>{siteName}</h2>
-                <p>파포자 구조 프로젝트</p>
+                <p>Python Code Practice</p>
 
                 <button onClick={this.Start}>시작하기</button>
             </div>
